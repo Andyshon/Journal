@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Journal</string>
+
+    <string name="go">Go</string>
+    <string name="menu_delete">Delete</string>
+    <string name="menu_share">Share</string>
+    <string name="date_placeholder">15 июл., 23:14</string>
+    <string name="three_dots">⋮</string>
+    <string name="add_comment">Добавьте комментарий</string>
+</resources>

@@ -1,0 +1,26 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+
+    <style name="RecordingProgressBarColor" parent="AppTheme">
+        <item name="colorAccent">#FFDB4437</item>
+        <item name="colorPrimary">#FFDB4437</item>
+    </style>
+
+    <style name="RecordingProgressBar" parent="Widget.AppCompat.ProgressBar.Horizontal">
+        <!-- Scale up the drawable so we can shrink the margin down to just the drawable and still
+             have a 4dp sized throbber -->
+        <item name="android:minHeight">26dip</item>
+        <item name="android:maxHeight">26dip</item>
+    </style>
+
+
+</resources>

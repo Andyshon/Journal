@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/container"
+    >
+
+    <FrameLayout
+        android:id="@+id/experiment_pane"
+        android:layout_width="match_parent"
+        android:background="#dfd1d1"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical" >
+    </FrameLayout>
+
+    <View
+        android:id="@+id/shadow"
+        android:layout_width="match_parent"
+        android:layout_height="16dp"
+        android:background="@drawable/top_shadow"
+        app:layout_anchor="@id/bottom" />
+
+    <LinearLayout
+        android:id="@+id/bottom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_behavior="com.andyshon.journal.Activity.PanesBottomSheetBehavior"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tool_picker_holder"
+            android:orientation="vertical"
+            >
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#424242"
+                >
+
+                <ImageButton
+                    android:layout_width="72dp"
+                    android:layout_height="6dp"
+                    android:layout_marginTop="4dp"
+                    android:id="@+id/grabber"
+                    android:src="@drawable/grabber"
+                    android:layout_gravity="center_horizontal"
+                    />
+
+            </FrameLayout>
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tool_picker"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="#424242"
+                android:contentDescription="Available tools"
+                app:tabIndicatorColor="#fff"
+                app:tabIndicatorHeight="5dp"
+                app:tabMode="scrollable"
+                app:tabMaxWidth="56dp"
+                />
+
+            <ProgressBar
+                android:layout_width="match_parent"
+                android:layout_height="26dp"
+                android:theme="@style/RecordingProgressBarColor"
+                style="@style/RecordingProgressBar"
+                android:id="@+id/recording_progress_bar"
+                android:indeterminate="true"
+                android:indeterminateBehavior="repeat"
+                android:layout_marginTop="-11dp"
+                android:layout_marginBottom="-11dp"
+                />
+
+        </LinearLayout>
+
+        <com.andyshon.journal.Activity.CustomViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:background="#fff"
+            android:layout_height="fill_parent"/>
+
+        <FrameLayout
+            android:id="@+id/child_fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/bottom_control_bar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="bottom"
+        android:background="#424242"
+        android:elevation="4dp">
+
+        <ImageView
+            android:id="@+id/tvSendBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:background="@drawable/ic_send_white_24dp" />
+
+    </FrameLayout>
+
+</android.support.design.widget.CoordinatorLayout>

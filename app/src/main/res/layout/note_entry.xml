@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="3dp"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:elevation="4dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <LinearLayout
+                android:id="@+id/dateLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="15 июл., 23:14"
+                    android:textColor="#737373"
+                    android:textSize="14sp"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="center_vertical"
+                    android:textAppearance="?android:textAppearanceLarge"/>
+
+                <TextView
+                    android:id="@+id/tvOptionDigit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="&#8942;"
+                    android:textAppearance="?android:textAppearanceLarge"
+                    android:layout_gravity="center_vertical"
+
+                    android:paddingLeft="10dp"/>
+
+            </LinearLayout>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="7dp"
+                android:background="#d1d1d1"
+                android:layout_below="@id/dateLayout"/>
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                android:id="@+id/tvText"
+                android:hint="note"
+                android:textSize="18sp"
+                android:layout_below="@id/dateLayout"
+                android:textAppearance="?android:textAppearanceLarge"/>
+
+
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+</LinearLayout>
