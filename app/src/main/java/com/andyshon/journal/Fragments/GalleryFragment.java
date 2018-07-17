@@ -12,16 +12,14 @@ import com.andyshon.journal.R;
 
 public class GalleryFragment extends Fragment {
 
-    private ImageCallback mImageCallback;
+    private GalleryCallback callback;
 
-    public interface ImageCallback {
+    public interface GalleryCallback {
         void onOpenImageGallery();
     }
 
 
-    public GalleryFragment() {
-        // Required empty public constructor
-    }
+    public GalleryFragment(){}
 
 
     @Override
@@ -35,7 +33,7 @@ public class GalleryFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_gallery, container, false);
 
 
-        mImageCallback.onOpenImageGallery();
+        callback.onOpenImageGallery();
 
         return view;
     }
@@ -45,8 +43,8 @@ public class GalleryFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
 
-        if (context instanceof ImageCallback) {
-            mImageCallback = (ImageCallback) context;
+        if (context instanceof GalleryCallback) {
+            callback = (GalleryCallback) context;
         } else {
             throw new RuntimeException(context.toString() + "must implement ImageCallback");
         }
