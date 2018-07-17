@@ -8,7 +8,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.andyshon.journal.Activity.PanesBottomSheetBehavior;
 import com.andyshon.journal.Adapter.ItemAdapter;
 import com.andyshon.journal.FragmentItems.ListFragments;
 import com.andyshon.journal.R;
@@ -19,13 +21,21 @@ import java.util.List;
 
 public class ParentFragment extends Fragment {
 
-
     private ItemAdapter postAdapter;
     private List<ListFragments> listFragments;
+    private static PanesBottomSheetBehavior mBottomBehavior;
+
+    private TextView tvNoPost;
 
 
-    public ParentFragment() {
-        // Required empty public constructor
+    public ParentFragment(){}
+
+    public static ParentFragment newInstance(PanesBottomSheetBehavior mb) {
+        mBottomBehavior = mb;
+        Bundle bundle = new Bundle();
+        ParentFragment parentFragment = new ParentFragment();
+        parentFragment.setArguments(bundle);
+        return parentFragment;
     }
 
 
@@ -40,6 +50,7 @@ public class ParentFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_parent, container, false);
 
+        tvNoPost = view.findViewById(R.id.tvNoPost);
 
         listFragments = new ArrayList<>();
 
@@ -53,7 +64,30 @@ public class ParentFragment extends Fragment {
         recyclerView.setAdapter(postAdapter);
 
 
+        showTitleIfNoItems();
+
         return view;
+    }
+
+
+    private void showTitleIfNoItems() {
+        if (listFragments.size() == 0 || listFragments.isEmpty()) {
+            showNoPostTitle();
+        }
+        else {
+            hideNoPostTitle();
+        }
+    }
+
+
+    private void showNoPostTitle() {
+        tvNoPost.setVisibility(View.VISIBLE);
+        mBottomBehavior.setState(PanesBottomSheetBehavior.STATE_MIDDLE);
+    }
+
+
+    private void hideNoPostTitle() {
+        tvNoPost.setVisibility(View.GONE);
     }
 
 
@@ -64,6 +98,7 @@ public class ParentFragment extends Fragment {
 
 
     public void updateAdapter() {
+        showTitleIfNoItems();
         postAdapter.notifyDataSetChanged();
     }
 
