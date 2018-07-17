@@ -16,7 +16,7 @@ import com.andyshon.journal.Fragments.NoteFragment;
 public class PagerAdapter extends FragmentStatePagerAdapter {
     private int mNumOfTabs;
 
-    private PagerAdapterCallback pagerAdapterCallback;
+    private PagerAdapterCallback callback;
 
     public interface PagerAdapterCallback {
         void onGetCurrentFragment(Fragment currentFragment);
@@ -25,7 +25,7 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
 
     public PagerAdapter(Context context, FragmentManager fm, int NumOfTabs) {
         super(fm);
-        pagerAdapterCallback = (PagerAdapterCallback) context;
+        callback = (PagerAdapterCallback) context;
         this.mNumOfTabs = NumOfTabs;
     }
 
@@ -37,12 +37,12 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
             case 0:
                 System.out.println("CASE 0");
                 NoteFragment noteFragment = new NoteFragment();
-                pagerAdapterCallback.onGetCurrentFragment(noteFragment);
+                callback.onGetCurrentFragment(noteFragment);
                 return noteFragment;
             case 1:
                 System.out.println("CASE 1");
                 GalleryFragment galleryFragment = new GalleryFragment();
-                pagerAdapterCallback.onGetCurrentFragment(galleryFragment);
+                callback.onGetCurrentFragment(galleryFragment);
                 return galleryFragment;
             default:
                 return null;
