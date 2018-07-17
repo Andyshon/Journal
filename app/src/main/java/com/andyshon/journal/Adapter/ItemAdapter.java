@@ -33,9 +33,9 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
 
     private Activity activity;
 
-    static Callback callback;
+    static ItemAdapterCallback callback;
 
-    public interface Callback{
+    public interface ItemAdapterCallback{
         void NotifyAdapter();
     }
 
@@ -43,7 +43,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
     public ItemAdapter(Context c, List<ListFragments> list) {
         mContext = c;
         commentList = list;
-        callback = (Callback)mContext;
+        callback = (ItemAdapterCallback)mContext;
         this.activity = (Activity) mContext;
     }
 
