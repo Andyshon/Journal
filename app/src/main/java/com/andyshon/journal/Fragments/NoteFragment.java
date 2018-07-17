@@ -16,16 +16,14 @@ import com.andyshon.journal.R;
 public class NoteFragment extends Fragment {
 
     private EditText etTextField;
-    private CommentCallback mCommentCallback;
+    private NoteCallback callback;
 
-    public interface CommentCallback {
+    public interface NoteCallback {
         void onGetNote(Note note);
     }
 
 
-    public NoteFragment() {
-        // Required empty public constructor
-    }
+    public NoteFragment(){}
 
 
     @Override
@@ -48,8 +46,8 @@ public class NoteFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof CommentCallback) {
-            mCommentCallback = (CommentCallback) context;
+        if (context instanceof NoteCallback) {
+            callback = (NoteCallback) context;
         } else {
             throw new RuntimeException(context.toString() + "must implement CommentCallback");
         }
@@ -64,7 +62,10 @@ public class NoteFragment extends Fragment {
 
     public void requestForNote() {
         Note note = new Note(etTextField.getText().toString().trim(), FragmentItemsUtils.getCurrentTimeStamp());
-        mCommentCallback.onGetNote(note);
+        callback.onGetNote(note);
+
+        // remove text from EditText after note is done
+        etTextField.getText().clear();
     }
 
 }
