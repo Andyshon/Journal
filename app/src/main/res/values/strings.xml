@@ -7,4 +7,5 @@
     <string name="date_placeholder">15 июл., 23:14</string>
     <string name="three_dots">⋮</string>
     <string name="add_comment">Добавьте комментарий</string>
+    <string name="you_have_no_posts">У вас пока нет записей.</string>
 </resources>
