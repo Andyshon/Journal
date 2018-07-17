@@ -15,7 +15,6 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.andyshon.journal.Adapter.ItemAdapter;
 import com.andyshon.journal.Adapter.PagerAdapter;
@@ -30,7 +29,7 @@ import com.andyshon.journal.R;
 
 
 public class SecondActivity extends AppCompatActivity
-        implements NoteFragment.CommentCallback, PagerAdapter.PagerAdapterCallback, GalleryFragment.ImageCallback, ItemAdapter.Callback {
+        implements NoteFragment.NoteCallback, GalleryFragment.GalleryCallback, PagerAdapter.PagerAdapterCallback, ItemAdapter.ItemAdapterCallback {
 
 
     private static final int GET_IMAGE = 1;
@@ -52,11 +51,6 @@ public class SecondActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction tr = fragmentManager.beginTransaction();
-        parentFragment = new ParentFragment();
-        tr.replace(R.id.experiment_pane, parentFragment, "s").commit();
-
 
         mRecordingBar = (ProgressBar) findViewById(R.id.recording_progress_bar);
         hideRecordingBar();
@@ -65,6 +59,15 @@ public class SecondActivity extends AppCompatActivity
         View bottomSheet = findViewById(R.id.bottom);
         //View controlBarSpacer = view.findViewById(R.id.control_bar_spacer);
         FrameLayout controlBar = (FrameLayout) findViewById(R.id.bottom_control_bar);
+
+        mBottomBehavior = (PanesBottomSheetBehavior) ((CoordinatorLayout.LayoutParams) bottomSheet.getLayoutParams()).getBehavior();
+
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction tr = fragmentManager.beginTransaction();
+        //parentFragment = new ParentFragment(mBottomBehavior);
+        parentFragment = ParentFragment.newInstance(mBottomBehavior);
+        tr.replace(R.id.experiment_pane, parentFragment, "s").commit();
+
 
         ImageView tvSendBtn = findViewById(R.id.tvSendBtn);
         tvSendBtn.setOnClickListener(view -> {
@@ -99,7 +102,7 @@ public class SecondActivity extends AppCompatActivity
         });
 
 
-        mBottomBehavior = (PanesBottomSheetBehavior) ((CoordinatorLayout.LayoutParams) bottomSheet.getLayoutParams()).getBehavior();
+
         mBottomBehavior.setBottomSheetCallback(
                 new PanesBottomSheetBehavior.BottomSheetCallback() {
                     @Override
@@ -171,7 +174,6 @@ public class SecondActivity extends AppCompatActivity
 
     @Override
     public void onGetNote(Note note) {
-        Toast.makeText(this, "onGetComment!", Toast.LENGTH_SHORT).show();
         parentFragment.updateAdapter(note);
     }
 
